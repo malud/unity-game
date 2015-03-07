@@ -1,6 +1,6 @@
 {
   "name": "unitygame",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A npm cli package to rapidly create a Unity3D boilerplate project you can start with.",
   "preferGlobal": true,
   "main": "./unitygame",
