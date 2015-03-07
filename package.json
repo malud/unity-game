@@ -32,7 +32,8 @@
   "homepage": "https://github.com/malud/unity-game",
   "dependencies": {
     "commander": "^2.6.0",
-    "fs-extra": "^0.16.4"
+    "fs-extra": "^0.16.4",
+    "replace": "^0.3.0"
   },
   "files": [
     "bin",
