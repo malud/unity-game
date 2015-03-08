@@ -4,6 +4,8 @@ module.exports = (function () {
     var path    = require('path');
     var replace = require('replace');
 
+    var _commands = ['create'];
+
     var _updateProjectSettings = function (projectName, projectPath, bundleIdentifier) {
         var settingsPath = path.join(projectPath, 'Unity/ProjectSettings');
         replace({
@@ -43,7 +45,12 @@ module.exports = (function () {
         });
     };
 
+    var isCommand = function (other) {
+        return _commands.indexOf(other) > -1;
+    };
+
     return {
-        create:   createProject
+        create:     createProject,
+        isCommand:  isCommand
     };
 })();
