@@ -1,8 +1,9 @@
 module.exports = (function () {
 
-    var fse     = require('fs-extra');
-    var path    = require('path');
-    var replace = require('replace');
+    var fse         = require('fs-extra'),
+        path        = require('path'),
+        replace     = require('replace'),
+        packages    = require('./packages.js');
 
     var _commands = ['create'];
 
@@ -28,7 +29,11 @@ module.exports = (function () {
         console.log("  -> Done!".green);
     };
 
-    var createProject = function (projectName, bundleIdentifier) {
+    var _installPackages = function (items, projectPath) {
+        packages.install(items, path.join(projectPath, 'Unity/Assets/Packages'));
+    };
+
+    var createProject = function (projectName, bundleIdentifier, options) {
         var projectDir = path.join(process.cwd(), projectName);
         fse.ensureDir(projectDir);
         console.log('  -> Creating', projectName.inverse, '...');
@@ -45,6 +50,7 @@ module.exports = (function () {
             console.log("  -> Done!".green);
 
             _updateProjectSettings(projectName, projectDir, bundleIdentifier);
+            _installPackages(options.packages, projectDir);
         });
     };
 

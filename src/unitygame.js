@@ -4,7 +4,12 @@ var fse         = require('fs-extra'),
     commands    = require('./commands.js'),
     packageJson = fse.readJsonSync(path.join(__dirname, '../package.json'));
 
+function list(val) {
+    return val.split(',');
+}
+
 app.command('create <project-name> <bundle-identifier>')
+    .option('-p, --packages <items>', 'Installs optional unity packages too.', list)
     .description('    Create a new Unity3D game project')
     .action(commands.create);
 
