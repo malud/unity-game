@@ -1,1 +1,1 @@
-# Projectname
+# {{PROJECTNAME}}

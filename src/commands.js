@@ -11,14 +11,17 @@ module.exports = (function () {
 
     var _updateProjectSettings = function (projectName, projectPath, bundleIdentifier) {
         console.log('  -> Updating project settings ...');
-        var settingsPath = path.join(projectPath, 'Unity/ProjectSettings');
+        var settingsPath = projectPath;
+        // sets project name in README.md & ProjectSettings
         replace({
-            regex: 'productName: unity',
-            replacement: 'productName: ' + projectName,
+            regex: '{{PROJECTNAME}}',
+            replacement: projectName,
             paths: [settingsPath],
             recursive: true,
             silent: true
         });
+
+        settingsPath = path.join(projectPath, 'Unity/ProjectSettings');
         replace({
             regex: 'com.Company.ProductName',
             replacement: bundleIdentifier,
