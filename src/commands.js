@@ -6,7 +6,10 @@ module.exports = (function () {
 
     var _commands = ['create'];
 
+    // using colors string prototype extensions from commander package here
+
     var _updateProjectSettings = function (projectName, projectPath, bundleIdentifier) {
+        console.log('  -> Updating project settings ...');
         var settingsPath = path.join(projectPath, 'Unity/ProjectSettings');
         replace({
             regex: 'productName: unity',
@@ -22,24 +25,24 @@ module.exports = (function () {
             recursive: true,
             silent: true
         });
-        console.log('  -> Updated project settings!');
+        console.log("  -> Done!".green);
     };
 
     var createProject = function (projectName, bundleIdentifier) {
         var projectDir = path.join(process.cwd(), projectName);
         fse.ensureDir(projectDir);
-        console.log('  -> Creating', projectName, '...');
+        console.log('  -> Creating', projectName.inverse, '...');
         fse.copy(path.join(__dirname, '../template'), projectDir, function (err) {
             if(err)
             {
-                console.error(err);
+                console.error(err.red);
             }
 
             // fix - set final name
             // gets installed as .npmignore if named .gitignore in npm package ??
             fse.rename(path.join(projectDir, '_gitignore'), path.join(projectDir, '.gitignore'));
 
-            console.log("  -> Done!");
+            console.log("  -> Done!".green);
 
             _updateProjectSettings(projectName, projectDir, bundleIdentifier);
         });
