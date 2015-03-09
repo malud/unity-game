@@ -36,15 +36,22 @@ module.exports = (function () {
         packages.install(items, path.join(projectPath, 'Unity/Assets/Packages'));
     };
 
+    var _renameDotFile = function(from, to) {
+        // using move() instead of rename() due to windows issues
+        // move uses rename and copy/delete as fallback
+        fse.move(from, to, function (err) {
+          if(err) throw err;
+        });
+    };
+
     var createProject = function (projectName, bundleIdentifier, options) {
         var projectDir = path.join(process.cwd(), projectName);
         fse.ensureDir(projectDir);
         console.log('  -> Creating', projectName.inverse, '...');
         fse.copySync(path.join(__dirname, '../template'), projectDir);
 
-        // fix - set final name
-        // gets installed as .npmignore if named .gitignore in npm package ??
-        fse.rename(path.join(projectDir, '_gitignore'), path.join(projectDir, '.gitignore'));
+        // since we can't ship .ignore files we have to rename this file
+        _renameDotFile(path.join(projectDir, '_gitignore'), path.join(projectDir, '.gitignore'));
         console.log("  -> Done!".green);
 
         _updateProjectSettings(projectName, projectDir, bundleIdentifier);
