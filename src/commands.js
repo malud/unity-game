@@ -40,21 +40,15 @@ module.exports = (function () {
         var projectDir = path.join(process.cwd(), projectName);
         fse.ensureDir(projectDir);
         console.log('  -> Creating', projectName.inverse, '...');
-        fse.copy(path.join(__dirname, '../template'), projectDir, function (err) {
-            if(err)
-            {
-                console.error(err.red);
-            }
+        fse.copySync(path.join(__dirname, '../template'), projectDir);
 
-            // fix - set final name
-            // gets installed as .npmignore if named .gitignore in npm package ??
-            fse.rename(path.join(projectDir, '_gitignore'), path.join(projectDir, '.gitignore'));
+        // fix - set final name
+        // gets installed as .npmignore if named .gitignore in npm package ??
+        fse.rename(path.join(projectDir, '_gitignore'), path.join(projectDir, '.gitignore'));
+        console.log("  -> Done!".green);
 
-            console.log("  -> Done!".green);
-
-            _updateProjectSettings(projectName, projectDir, bundleIdentifier);
-            _installPackages(options.packages, projectDir);
-        });
+        _updateProjectSettings(projectName, projectDir, bundleIdentifier);
+        _installPackages(options.packages, projectDir);
     };
 
     var isCommand = function (other) {
