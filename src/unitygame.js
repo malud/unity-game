@@ -14,9 +14,13 @@ function list(val) {
     return val.split(',');
 }
 
-app.command('create <project-name> <bundle-identifier>')
-    .option('-p, --packages <items>', 'Installs optional unity packages too.', list)
+/**
+ * Create command
+ */
+app.command('create <project-name> [bundle-identifier]')
+    .alias('cr')
     .description('    Create a new Unity3D game project')
+    .option('-p, --packages <items>', 'Installs optional unity packages too.', list)
     .action(commands.create);
 
 app.version(pkg.version);
