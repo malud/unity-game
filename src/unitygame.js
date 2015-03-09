@@ -5,7 +5,10 @@ var fse         = require('fs-extra'),
     updateNotifier = require('update-notifier'),
     pkg = require('./../package.json');
 
-updateNotifier({pkg: pkg}).notify();
+updateNotifier({
+    pkg: pkg,
+    updateCheckInterval: 1000 * 60 * 60 * 12 // at least twice a day due to current update interval
+}).notify();
 
 function list(val) {
     return val.split(',');
@@ -20,18 +23,6 @@ app.version(pkg.version);
 app.parse(process.argv);
 
 // show some usage if params aren't valid
-if(process.argv.length <= 2)
-{
-    app.help();
-} else if(process.argv.length > 2)
-{
-    if (!(app.options.indexOf(process.argv[2]) > -1))
-    {
-        if(!commands.isCommand(process.argv[2]))
-        {
-            app.help();
-        }
-    }
-}
+if(!app.args.length) app.help();
 
 module.exports = app;
