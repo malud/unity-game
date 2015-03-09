@@ -3,6 +3,7 @@ module.exports = (function () {
     var fse         = require('fs-extra'),
         path        = require('path'),
         replace     = require('replace'),
+        prompt      = require('prompt-sync'),
         packages    = require('./packages.js');
 
     var _commands = ['create'];
@@ -46,6 +47,21 @@ module.exports = (function () {
 
     var createProject = function (projectName, bundleIdentifier, options) {
         var projectDir = path.join(process.cwd(), projectName);
+
+        if(fse.existsSync(projectDir))
+        {
+            console.log('  -? ' + projectName.inverse, 'is already there! Delete? [yes/no] (yes)'.red);
+            var result = prompt();
+            if(!result || result === 'yes')
+            {
+                fse.removeSync(projectDir);
+            } else
+            {
+                console.log('  <- canceled.');
+                return;
+            }
+        }
+
         fse.ensureDir(projectDir);
         console.log('  -> Creating', projectName.inverse, '...');
         fse.copySync(path.join(__dirname, '../template'), projectDir);
