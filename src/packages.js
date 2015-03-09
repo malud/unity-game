@@ -32,7 +32,7 @@ module.exports = (function () {
                 }
 
                 spi.stop(true);
-                console.log('  -> Installed package', item, 'successfully'.green);
+                console.log('  -> Installed package', item.inverse, 'successfully'.green);
             });
         });
     };

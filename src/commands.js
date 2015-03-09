@@ -48,7 +48,7 @@ module.exports = (function () {
         console.log("  -> Done!".green);
 
         _updateProjectSettings(projectName, projectDir, bundleIdentifier);
-        _installPackages(options.packages, projectDir);
+        if(options.packages) _installPackages(options.packages, projectDir);
     };
 
     var isCommand = function (other) {
