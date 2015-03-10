@@ -1,6 +1,4 @@
-var fse         = require('fs-extra'),
-    path        = require('path'),
-    app         = require('commander'),
+var app         = require('commander'),
     commands    = require('./commands.js'),
     updateNotifier = require('update-notifier'),
     pkg = require('./../package.json');
