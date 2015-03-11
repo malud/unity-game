@@ -41,9 +41,10 @@
   },
   "files": [
     "bin",
-    "package.json",
-    "template",
+    "data",
     "src",
+    "template",
+    "package.json",
     "LICENSE",
     "README.md"
   ]

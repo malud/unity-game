@@ -3,14 +3,8 @@ module.exports = (function () {
     var download    = require('download'),
         path        = require('path'),
         fse         = require('fs-extra'),
+        packages    = require('./../data/unitypackages.json'),
         spinner     = require('cli-spinner').Spinner;
-
-    // TODO outsource this list...
-    var _packages = {
-        ugb:        'https://bitbucket.org/kaiwegner/ugb-source/get/master.zip',
-        ubs:        'https://bitbucket.org/malud/ubs-source/get/master.zip',
-        testtools:  'https://bitbucket.org/Unity-Technologies/unitytesttools/get/stable.zip'
-    };
 
     /**
      * Move TestTools out of the assets folder and cleanup some files
@@ -36,7 +30,7 @@ module.exports = (function () {
     var install = function (items, destPath) {
         var dl = new download({ extract: true, strip: 1 });
         items.forEach(function(item, index, array) {
-            var url = _packages[item];
+            var url = packages[item].url;
             if(!url)
             {
                 console.error('Unkown package information:'.red, item);
