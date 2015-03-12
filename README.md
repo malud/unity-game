@@ -5,14 +5,20 @@ A npm cli package to rapidly create a Unity3D boilerplate project you can start 
     npm install -g unitygame
 
 ## Usage
-    unitygame create MyUnity3DGame com.npm.app
+    unitygame create MyUnity3DGame com.company.product
 
-which creates a folder structure like [this one] (https://github.com/malud/unity-game/tree/master/template)
+Which creates a folder structure like [this one] (https://github.com/malud/unity-game/tree/master/template)
+The package option is optional.
 
-### Create with optional unity packages
-    unitygame create MyUnity3DGame com.gamewithpackages.app -p ugb,ubs
+## Commands
+    create <ProjectName> [bundle-identifier] -p list --dev
 
-This creates the unity project and also installs the following packages to Assets/Packages.
+This creates the unity project and also installs the listed packages to Unity/Assets/Packages.
+
+### Example - use package shorts
+    -p ugb,ubs,testtools
 
 * [UGB - UnityGameBase] (https://bitbucket.org/kaiwegner/unity-game-base)
 * [UBS - UnityBuildSystem] (https://bitbucket.org/kaiwegner/unity-build-system)
+* [TESTTOOLS - UnityTestTools] (https://bitbucket.org/Unity-Technologies/unitytesttools)
+* [WATCHDOG - CodeWatchDog] (https://bitbucket.org/flberger_work/codewatchdog_unity)

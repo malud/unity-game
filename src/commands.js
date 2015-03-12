@@ -33,8 +33,8 @@ module.exports = (function () {
         console.log("  -> Done!".green);
     };
 
-    var _installPackages = function (items, projectPath) {
-        packages.install(items, path.join(projectPath, 'Unity/Assets/Packages'));
+    var _installPackages = function (items, projectPath, dev) {
+        packages.install(items, path.join(projectPath, 'Unity/Assets/Packages'), dev);
     };
 
     var _renameDotFile = function(from, to) {
@@ -47,7 +47,6 @@ module.exports = (function () {
 
     var createProject = function (projectName, bundleIdentifier, options) {
         var projectDir = path.join(process.cwd(), projectName);
-
         if(fse.existsSync(projectDir))
         {
             console.log('  -? ' + projectName.inverse, 'is already there! Delete? [yes/no] (yes)'.red);
@@ -71,7 +70,7 @@ module.exports = (function () {
         console.log("  -> Done!".green);
 
         _updateProjectSettings(projectName, projectDir, bundleIdentifier);
-        if(options.packages) _installPackages(options.packages, projectDir);
+        if(options.packages) _installPackages(options.packages, projectDir, options.dev);
     };
 
     var isCommand = function (other) {

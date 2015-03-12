@@ -37,8 +37,9 @@ var listPackages = function () {
  */
 app.command('create <project-name> [bundle-identifier]')
     .alias('cr')
-    .description('    Create a new Unity3D game project')
-    .option('-p, --packages <items>', 'Installs optional unity packages too.', list)
+    .description('Create a new Unity3D game project')
+    .option('-p, --packages <items>', 'installs defined packages, use --help to list them', list)
+    .option('-d, --dev', 'Installs the package development version if available')
     .action(commands.create)
     .on('--help', function () {
         console.log('  Example:\n');

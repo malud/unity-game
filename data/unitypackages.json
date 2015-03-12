@@ -2,7 +2,8 @@
   "ugb": {
     "title": "UnityGameBase",
     "description": "handy set of classes and tools to speed up your development speed.",
-    "url": "https://bitbucket.org/kaiwegner/ugb-source/get/master.zip"
+    "url": "https://bitbucket.org/kaiwegner/ugb-source/get/master.zip",
+    "url-dev": "https://bitbucket.org/kaiwegner/ugb-source/get/development.zip"
   },"ubs": {
     "title": "UnityBuildSystem",
     "description": "Provide an Editor Extension which allows adding multiple build targets and batch building all with custom build steps.",

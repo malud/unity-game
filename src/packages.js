@@ -27,10 +27,10 @@ module.exports = (function () {
         }
     };
 
-    var install = function (items, destPath) {
+    var install = function (items, destPath, dev) {
         var dl = new download({ extract: true, strip: 1 });
         items.forEach(function(item, index, array) {
-            var url = packages[item].url;
+            var url = (dev && packages[item].url-dev) ? packages[item].url-dev : packages[item].url;
             if(!url)
             {
                 console.error('Unkown package information:'.red, item);
@@ -39,7 +39,8 @@ module.exports = (function () {
 
             dl.get(url).dest(destPath);
 
-            var spi = new spinner('Downloading package...' + item.inverse);
+            var devText = (dev) ? '(dev)'.blue : '';
+            var spi = new spinner('Downloading package...' + item.blue + devText);
             spi.setSpinnerString(10);
             spi.start();
 
@@ -52,7 +53,9 @@ module.exports = (function () {
                 if(item === 'testtools') _patchTestTools(destPath);
 
                 spi.stop(true);
-                console.log('  -> Installed package', item.inverse, 'successfully'.green);
+                console.log('  -> Installed package',
+                    item.blue + devText,
+                    'successfully'.green);
             });
         });
     };
