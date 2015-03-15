@@ -7,9 +7,6 @@
   "bin": {
     "unitygame": "./bin/unitygame.js"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "os": [
     "darwin",
     "win32"
