@@ -1,4 +1,4 @@
-# Unitygame
+# Unitygame [![Build Status](https://travis-ci.org/malud/unity-game.svg)](https://travis-ci.org/malud/unity-game)
 A npm cli package to rapidly create a Unity3D boilerplate project you can start with.
 
 ## Installation
