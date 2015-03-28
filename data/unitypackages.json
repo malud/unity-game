@@ -2,17 +2,25 @@
   "ugb": {
     "title": "UnityGameBase",
     "description": "handy set of classes and tools to speed up your development speed.",
-    "url": "https://bitbucket.org/kaiwegner/ugb-source/get/master.zip",
-    "url-dev": "https://bitbucket.org/kaiwegner/ugb-source/get/development.zip"
-  },"ubs": {
+    "url": "https://github.com/kwnetzwelt/ugb-source/archive/master.zip",
+    "url-dev": "https://github.com/kwnetzwelt/ugb-source/archive/development.zip"
+  },
+  "ugb-examples": {
+    "title": "UnityGameBase Examples",
+    "description": "Contains examples on how to use the UnityGameBase.",
+    "url": "https://github.com/kwnetzwelt/ugb-examples/archive/master.zip"
+  },
+  "ubs": {
     "title": "UnityBuildSystem",
     "description": "Provide an Editor Extension which allows adding multiple build targets and batch building all with custom build steps.",
     "url": "https://bitbucket.org/malud/ubs-source/get/master.zip"
-  },"testtools": {
+  },
+  "testtools": {
     "title": "UnityTestTools",
     "description": "Integration Test Framework, Assertion component, Unit Test Runner",
     "url": "https://bitbucket.org/Unity-Technologies/unitytesttools/get/stable.zip"
-  },"watchdog": {
+  },
+  "watchdog": {
     "title": "CodeWatchDog",
     "description": "coding convention compliance checker",
     "url": "https://bitbucket.org/flberger_work/codewatchdog_unity/get/default.zip"

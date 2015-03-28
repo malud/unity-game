@@ -7,6 +7,9 @@
   "bin": {
     "unitygame": "./bin/unitygame.js"
   },
+  "scripts": {
+    "test": "unitygame -V"
+  },
   "os": [
     "darwin",
     "win32"

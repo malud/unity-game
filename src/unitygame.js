@@ -14,8 +14,8 @@ function list(val) {
 
 var listPackages = function () {
     var packages = require('./../data/unitypackages.json');
-    var repeat = function (str, times){
-        return Array(times + 1).join(str);
+    var repeat = function (str, times) {
+        return Array(Math.max(1, times + 1)).join(str);
     };
 
     console.log('  Packages:\n'.yellow);
@@ -24,9 +24,9 @@ var listPackages = function () {
         if(packages.hasOwnProperty(pack))
         {
             console.log('    * '.yellow + pack,
-                repeat(' ', 10 - pack.length),
+                repeat(' ', 12 - pack.length),
                 packages[pack].title,
-                repeat(' ', 16 - packages[pack].title.length),
+                repeat(' ', 24 - packages[pack].title.length),
                 packages[pack].description);
         }
     }
