@@ -8,7 +8,7 @@
     "unitygame": "./bin/unitygame.js"
   },
   "scripts": {
-    "test": "unitygame -V"
+    "test": "bin/unitygame -V"
   },
   "os": [
     "darwin",
