@@ -39,7 +39,7 @@ module.exports = (function () {
 
             dl.get(url).dest(destPath);
 
-            var devText = (dev) ? '(dev)'.blue : '';
+            var devText = (dev) ? '(dev)'.orange : '';
             var spi = new spinner('Downloading package...' + item.blue + devText);
             spi.setSpinnerString(10);
             spi.start();

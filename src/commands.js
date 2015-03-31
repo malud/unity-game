@@ -3,7 +3,6 @@ module.exports = (function () {
     var fse         = require('fs-extra'),
         path        = require('path'),
         replace     = require('replace'),
-        prompt      = require('prompt-sync'),
         packages    = require('./packages.js');
 
     var _commands = ['create'];
@@ -49,16 +48,21 @@ module.exports = (function () {
         var projectDir = path.join(process.cwd(), projectName);
         if(fse.existsSync(projectDir))
         {
-            console.log('  -? ' + projectName.inverse, 'is already there! Delete? [yes/no] (yes)'.red);
-            var result = prompt();
-            if(!result || result === 'yes')
-            {
-                fse.removeSync(projectDir);
-            } else
-            {
-                console.log('  <- canceled.');
-                return;
-            }
+            console.log('  -? ' + projectName.inverse, 'is already there! Delete? [yes/no] (yes)\n'.red,'❯');
+
+            process.stdin.resume();
+            process.stdin.setEncoding('utf8');
+            process.stdin.on('data', function (result) {
+                if(!result || result === 'yes')
+                {
+                    fse.removeSync(projectDir);
+                } else
+                {
+                    process.stdout.write('  <- canceled.');
+                    return;
+                }
+                process.exit(0);
+            });
         }
 
         fse.ensureDir(projectDir);
